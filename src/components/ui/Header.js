@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/styles'
 import Tabs from "@material-ui/core/Tabs"
 import Tab from "@material-ui/core/Tab"
 import Button from "@material-ui/core/Button"
+import { Link } from "react-router-dom"
 
 import logo from '../../assets/logo.svg'
 
@@ -48,6 +49,11 @@ const useStyles = makeStyles(theme => ({
 
 const Header = (props) => {
   const classes = useStyles()
+  const [value, setValue] = useState(0)
+
+  const handleChange = (e, value) => {
+    setValue(value)
+  }
 
     return (
       <React.Fragment>
@@ -55,12 +61,17 @@ const Header = (props) => {
             <AppBar position="fixed">
                 <Toolbar disableGutters>
                   <img src={logo} alt="logo" className={classes.logo} />
-                  <Tabs className={classes.tabContainer}>
-                    <Tab className={classes.tab} label="Home"></Tab>
-                    <Tab className={classes.tab} label="Services"></Tab>
-                    <Tab className={classes.tab} label="The Revolution"></Tab>
-                    <Tab className={classes.tab} label="About Us"></Tab>
-                    <Tab className={classes.tab} label="Contact Us"></Tab>
+                  <Tabs 
+                    value={value} 
+                    onChange={handleChange} 
+                    className={classes.tabContainer}
+                    // indicatorColor="primary" // removes bar from selected button
+                  >
+                    <Tab className={classes.tab} component={Link} to="/" label="Home"></Tab>
+                    <Tab className={classes.tab} component={Link} to="/services" label="Services"></Tab>
+                    <Tab className={classes.tab} component={Link} to="/revolution" label="The Revolution"></Tab>
+                    <Tab className={classes.tab} component={Link} to="/about" label="About Us"></Tab>
+                    <Tab className={classes.tab} component={Link} to="/contact" label="Contact Us"></Tab>
                   </Tabs>
                   <Button 
                     variant="contained" 
