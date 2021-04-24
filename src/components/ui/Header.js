@@ -53,6 +53,18 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "25px",
     height: "45px",
   },
+  menu: {
+    backgroundColor: theme.palette.common.blue,
+    color: "white",
+    borderRadius: "0px"
+  },
+  menuItem: {
+    ...theme.typography.tab,
+    opacity: 0.7,
+    "&:hover": {
+      opacity: 1
+    }
+  }
 }));
 
 const Header = (props) => {
@@ -158,18 +170,20 @@ const Header = (props) => {
               anchorEl={anchorEl}
               open={open}
               onClose={handleClose}
+              classes={{paper: classes.menu}}
+              elevation={0} // integrates popup
               MenuListProps={{ onMouseLeave: handleClose }} // removes onMouseOver
             >
-              <MenuItem onClick={() => {handleClose(); setValue(1)}} component={Link} to="/services">
+              <MenuItem classes={{root: classes.menuItem}} onClick={() => {handleClose(); setValue(1)}} component={Link} to="/services">
                 Services
               </MenuItem>
-              <MenuItem onClick={() => {handleClose(); setValue(1)}} component={Link} to="/customsoftware">
+              <MenuItem classes={{root: classes.menuItem}} onClick={() => {handleClose(); setValue(1)}} component={Link} to="/customsoftware">
                 Custom Software
               </MenuItem>
-              <MenuItem onClick={() => {handleClose(); setValue(1)}}  component={Link} to="mobileapps">
+              <MenuItem classes={{root: classes.menuItem}} onClick={() => {handleClose(); setValue(1)}}  component={Link} to="mobileapps">
                 Mobile App Development
               </MenuItem>
-              <MenuItem onClick={() => {handleClose(); setValue(1)}}  component={Link} to="websites">
+              <MenuItem classes={{root: classes.menuItem}} onClick={() => {handleClose(); setValue(1)}}  component={Link} to="websites">
                 Website Development
               </MenuItem>
             </Menu>
