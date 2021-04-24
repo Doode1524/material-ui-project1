@@ -11,11 +11,11 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
-import MenuIcon from '@material-ui/icons/Menu'
-import List from '@material-ui/core/List'
-import ListItem from'@material-ui/core/ListItem'
-import ListItemText from'@material-ui/core/ListItemText'
+import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
+import MenuIcon from "@material-ui/icons/Menu";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
 import logo from "../../assets/logo.svg";
 import { IconButton } from "@material-ui/core";
 
@@ -36,20 +36,20 @@ const useStyles = makeStyles((theme) => ({
     ...theme.mixins.toolbar,
     marginBottom: "3em",
     [theme.breakpoints.down("md")]: {
-      marginBottom: "2em"
+      marginBottom: "2em",
     },
     [theme.breakpoints.down("xs")]: {
-      marginBottom: "1.25em"
-    }
+      marginBottom: "1.25em",
+    },
   },
   logo: {
     height: "8em",
     [theme.breakpoints.down("md")]: {
-      height: "7em"
+      height: "7em",
     },
     [theme.breakpoints.down("xs")]: {
-      height: "5.5em"
-    }
+      height: "5.5em",
+    },
   },
   logoContainer: {
     padding: 0,
@@ -86,13 +86,23 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerIcon: {
     height: "50px",
-    width: "50px"
+    width: "50px",
   },
   drawerIconContainer: {
-    marginLeft: 'auto',
+    marginLeft: "auto",
     "&:hover": {
-      backgroundColor: "transparent"
-    }
+      backgroundColor: "transparent",
+    },
+  },
+  drawer: {
+    backgroundColor: theme.palette.common.blue,
+  },
+  drawerItem: {
+    ...theme.typography.tab,
+    color: "white",
+  },
+  drawerItemEstimate: {
+    backgroundColor: theme.palette.common.orange
   }
 }));
 
@@ -100,9 +110,9 @@ const Header = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
-  const matches = useMediaQuery(theme.breakpoints.down("md"))
+  const matches = useMediaQuery(theme.breakpoints.down("md"));
 
-  const [openDrawer, setOpenDrawer] = useState(false)
+  const [openDrawer, setOpenDrawer] = useState(false);
   const [value, setValue] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
   const [openMenu, setOpenMenu] = useState(false);
@@ -277,33 +287,93 @@ const Header = (props) => {
 
   const drawer = (
     <React.Fragment>
-      <SwipeableDrawer disableBackdropTransition={!iOS} disableDiscovery={iOS} open={openDrawer} onClose={() => setOpenDrawer(false)} onOpen={() => setOpenDrawer(true)}>
+      <SwipeableDrawer
+        disableBackdropTransition={!iOS}
+        disableDiscovery={iOS}
+        open={openDrawer}
+        onClose={() => setOpenDrawer(false)}
+        onOpen={() => setOpenDrawer(true)}
+        classes={{ paper: classes.drawer }}
+      >
         <List disablePadding>
-          <ListItem onClick={() => setOpenDrawer(false)} divider button component={Link} to='/'>
-            <ListItemText disableTypography>Home</ListItemText>
+          <ListItem
+            onClick={() => setOpenDrawer(false)}
+            divider
+            button
+            component={Link}
+            to="/"
+          >
+            <ListItemText className={classes.drawerItem} disableTypography>
+              Home
+            </ListItemText>
           </ListItem>
-          <ListItem onClick={() => setOpenDrawer(false)} divider button component={Link} to='/services'>
-            <ListItemText disableTypography>Services</ListItemText>
+          <ListItem
+            onClick={() => setOpenDrawer(false)}
+            divider
+            button
+            component={Link}
+            to="/services"
+          >
+            <ListItemText className={classes.drawerItem} disableTypography>
+              Services
+            </ListItemText>
           </ListItem>
-          <ListItem onClick={() => setOpenDrawer(false)} divider button component={Link} to='/revolution'>
-            <ListItemText disableTypography>The Revolution</ListItemText>
+          <ListItem
+            onClick={() => setOpenDrawer(false)}
+            divider
+            button
+            component={Link}
+            to="/revolution"
+          >
+            <ListItemText className={classes.drawerItem} disableTypography>
+              The Revolution
+            </ListItemText>
           </ListItem>
-          <ListItem onClick={() => setOpenDrawer(false)} divider button component={Link} to='/about'>
-            <ListItemText disableTypography>About Us</ListItemText>
+          <ListItem
+            onClick={() => setOpenDrawer(false)}
+            divider
+            button
+            component={Link}
+            to="/about"
+          >
+            <ListItemText className={classes.drawerItem} disableTypography>
+              About Us
+            </ListItemText>
           </ListItem>
-          <ListItem onClick={() => setOpenDrawer(false)} divider button component={Link} to='/contact'>
-            <ListItemText disableTypography>Contact Us</ListItemText>
+          <ListItem
+            onClick={() => setOpenDrawer(false)}
+            divider
+            button
+            component={Link}
+            to="/contact"
+          >
+            <ListItemText className={classes.drawerItem} disableTypography>
+              Contact Us
+            </ListItemText>
           </ListItem>
-          <ListItem onClick={() => setOpenDrawer(false)} divider button component={Link} to='/estimate'>
-            <ListItemText disableTypography>Free Estimate</ListItemText>
+          <ListItem
+            onClick={() => setOpenDrawer(false)}
+            divider
+            button
+            component={Link}
+            to="/estimate"
+            className={classes.drawerItemEstimate}
+          >
+            <ListItemText className={classes.drawerItem} disableTypography>
+              Free Estimate
+            </ListItemText>
           </ListItem>
         </List>
       </SwipeableDrawer>
-      <IconButton className={classes.drawerIconContainer} onClick={() => setOpenDrawer(!openDrawer)} disableRipple>
-        <MenuIcon className={classes.drawerIcon}/>
+      <IconButton
+        className={classes.drawerIconContainer}
+        onClick={() => setOpenDrawer(!openDrawer)}
+        disableRipple
+      >
+        <MenuIcon className={classes.drawerIcon} />
       </IconButton>
     </React.Fragment>
-  )
+  );
 
   return (
     <React.Fragment>
