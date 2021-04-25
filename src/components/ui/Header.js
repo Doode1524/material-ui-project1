@@ -81,6 +81,7 @@ const useStyles = makeStyles((theme) => ({
     ...theme.typography.tab,
     opacity: 0.7,
     "&:hover": {
+      // zindex: 1301,
       opacity: 1,
     },
   },
