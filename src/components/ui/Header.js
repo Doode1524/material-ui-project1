@@ -108,12 +108,12 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerItemSelected: {
     "& .MuiListItemText-root": {
-      opacity: 1
-    }
+      opacity: 1,
+    },
   },
   appbar: {
-    zIndex: theme.zIndex.modal + 1 // lines up drawer with appbar (also add div with classes.toolbarMargin in the component)
-  }
+    zIndex: theme.zIndex.modal + 1, // lines up drawer with appbar (also add div with classes.toolbarMargin in the component)
+  },
 }));
 
 const Header = (props) => {
@@ -194,7 +194,10 @@ const Header = (props) => {
         case `${route.link}`:
           if (props.value !== route.activeIndex) {
             props.setValue(route.activeIndex);
-            if (route.selectedIndex && route.selectedIndex !== props.selectedIndex) {
+            if (
+              route.selectedIndex &&
+              route.selectedIndex !== props.selectedIndex
+            ) {
               props.setSelectedIndex(route.selectedIndex);
             }
           }
@@ -236,7 +239,7 @@ const Header = (props) => {
         onClose={handleClose}
         classes={{ paper: classes.menu }}
         elevation={0} // integrates popup
-        style={{zIndex: 1302}}
+        style={{ zIndex: 1302 }}
         MenuListProps={{ onMouseLeave: handleClose }} // removes onMouseOver
         keepMounted
       >
@@ -280,16 +283,16 @@ const Header = (props) => {
               component={Link}
               to={route.link}
               selected={props.value === route.activeIndex}
-              classes={{selected: classes.drawerItemSelected, selected: classes.drawerItemSelected}}
+              classes={{
+                selected: classes.drawerItemSelected,
+                selected: classes.drawerItemSelected,
+              }}
               onClick={() => {
                 setOpenDrawer(false);
                 props.setValue(route.activeIndex);
               }}
             >
-              <ListItemText
-                className={classes.drawerItem}
-                disableTypography
-              >
+              <ListItemText className={classes.drawerItem} disableTypography>
                 {route.name}
               </ListItemText>
             </ListItem>
@@ -302,15 +305,12 @@ const Header = (props) => {
             divider
             button
             component={Link}
-            classes={{root: classes.drawerItemEstimate}}
+            classes={{ root: classes.drawerItemEstimate }}
             to="/estimate"
             selected={props.value === 5}
             className={classes.drawerItemEstimate}
           >
-            <ListItemText
-              className={classes.drawerItem}
-              disableTypography
-            >
+            <ListItemText className={classes.drawerItem} disableTypography>
               Free Estimate
             </ListItemText>
           </ListItem>
