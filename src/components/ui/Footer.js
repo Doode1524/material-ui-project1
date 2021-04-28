@@ -117,7 +117,7 @@ export default function Footer({
                 to="/mobileapps"
                 className={classes.link}
               >
-                Mobile App Development
+                iOS/Android App Development
               </Grid>
               <Grid
                 item
