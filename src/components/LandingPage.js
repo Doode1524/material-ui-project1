@@ -351,8 +351,21 @@ export default function LandingPage() {
           alignItems="center"
           style={{ height: "80em" }}
         >
-          <Grid item container style={{position: "absolute", textAlign: matchesXS ? "center" : "inherit"}} direction={matchesXS ? "column" : "row"}>
-            <Grid item sm style={{ marginLeft: matchesXS ? 0 : matchesSM ? "2em" :"5em" }}>
+          <Grid
+            item
+            container
+            style={{
+              position: "absolute",
+              textAlign: matchesXS ? "center" : "inherit",
+            }}
+            direction={matchesXS ? "column" : "row"}
+            spacing={matchesXS ? 10 : 0}
+          >
+            <Grid
+              item
+              sm
+              style={{ marginLeft: matchesXS ? 0 : matchesSM ? "2em" : "5em" }}
+            >
               <Grid container direction="column">
                 <Typography variant="h2" style={{ color: "white" }}>
                   About Us
@@ -370,7 +383,14 @@ export default function LandingPage() {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item sm style={{ marginRight: matchesXS ? 0 : matchesSM ? "2em" :"5em", textAlign: matchesXS ? "center" : "right" }}>
+            <Grid
+              item
+              sm
+              style={{
+                marginRight: matchesXS ? 0 : matchesSM ? "2em" : "5em",
+                textAlign: matchesXS ? "center" : "right",
+              }}
+            >
               <Grid container direction="column">
                 <Typography variant="h2" style={{ color: "white" }}>
                   Contact Us
