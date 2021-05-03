@@ -2,6 +2,7 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import ButtonArrow from "./ButtonArrow";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -79,7 +80,12 @@ export default function CallToAction() {
               Take advantage of the 21st Century.
             </Typography>
             <Grid container justify={matchesSM ? "center" : undefined} item>
-              <Button variant="outlined" className={classes.learnButton}>
+              <Button
+                component={Link}
+                to="/revolution"
+                variant="outlined"
+                className={classes.learnButton}
+              >
                 <span style={{ marginRight: 5 }}>Learn More</span>
                 <ButtonArrow
                   width={10}
@@ -92,7 +98,12 @@ export default function CallToAction() {
         </Grid>
       </Grid>
       <Grid item>
-        <Button variant="contained" className={classes.estimateButton}>
+        <Button
+          component={Link}
+          to="/estimate"
+          variant="contained"
+          className={classes.estimateButton}
+        >
           Free Estimate
         </Button>
       </Grid>
