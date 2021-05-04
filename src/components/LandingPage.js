@@ -410,7 +410,11 @@ export default function LandingPage(props) {
               sm
               style={{ marginLeft: matchesXS ? 0 : matchesSM ? "2em" : "5em" }}
             >
-              <Grid container style={{marginBottom: matchesXS ? '10em' : 0}} direction="column">
+              <Grid
+                container
+                style={{ marginBottom: matchesXS ? "10em" : 0 }}
+                direction="column"
+              >
                 <Typography variant="h2" style={{ color: "white" }}>
                   About Us
                 </Typography>
