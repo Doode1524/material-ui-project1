@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   serviceContainer: {
-    marginTop: "12em",
+    marginTop: "10em",
     [theme.breakpoints.down("sm")]: {
       padding: 25,
     },
@@ -48,7 +48,20 @@ export default function Services(props) {
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <Grid container direction="column">
+    <Grid
+      container
+      direction="column"
+      
+    >
+      <Grid item style={{ marginLeft: matchesSM ? 0 : "5em", marginTop: matchesSM ? "1em" : "2em" }}>
+        <Typography
+          variant="h2"
+          gutterBottom
+          align={matchesSM ? "center" : undefined}
+        >
+          Services
+        </Typography>
+      </Grid>
       <Grid item>
         {" "}
         {/*-----iOS/Android Block -----*/}
@@ -57,11 +70,13 @@ export default function Services(props) {
           direction="row"
           className={classes.serviceContainer}
           justify={matchesSM ? "center" : "flex-end"}
+          style={{ marginTop: matchesSM ? "1em" : "5em" }}
         >
           <Grid
             item
             style={{
               textAlign: matchesSM ? "center" : undefined,
+              width: matchesSM ? undefined : "35em",
             }}
           >
             <Typography variant="h4">iOS/Android App Development</Typography>
@@ -95,6 +110,7 @@ export default function Services(props) {
               className={classes.icon}
               alt="mobile phone icon"
               src={mobileAppsIcon}
+              width="250em"
             />
           </Grid>
         </Grid>
@@ -158,12 +174,13 @@ export default function Services(props) {
           container
           direction="row"
           className={classes.serviceContainer}
-          justify={matchesSM ? "center" : 'flex-end'}
+          justify={matchesSM ? "center" : "flex-end"}
+          style={{ marginBottom: "10em" }}
         >
           <Grid
             item
             style={{
-    
+              width: matchesSM ? undefined : "35em",
               textAlign: matchesSM ? "center" : undefined,
             }}
           >
@@ -192,11 +209,12 @@ export default function Services(props) {
               />
             </Button>
           </Grid>
-          <Grid item style={{marginRight: matchesSM ? 0 : "5em"}}>
+          <Grid item style={{ marginRight: matchesSM ? 0 : "5em" }}>
             <img
               className={classes.icon}
               alt="website icon"
               src={websitesIcon}
+              width="250em"
             />
           </Grid>
         </Grid>
