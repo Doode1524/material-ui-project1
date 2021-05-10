@@ -36,7 +36,7 @@ export default function Contact() {
 
   return (
     <Grid container direction="row">
-      <Grid item container direction="column" lg={3}>
+      <Grid item container direction="column" justify="center" lg={3}>
         <Grid item>
           <Typography variant="h2" style={{ lineHeight: 1 }}>
             Contact Us
@@ -47,6 +47,36 @@ export default function Contact() {
           >
             We're waiting.
           </Typography>
+        </Grid>
+        <Grid item container>
+          <Grid item>
+            <img src={phoneIcon} alt="phone" style={{ marginRight: "0.5em" }} />
+          </Grid>
+          <Grid item>
+            <Typography
+              variant="body1"
+              style={{ color: theme.palette.common.blue, fontSize: "1rem" }}
+            >
+              (555) 555-5555
+            </Typography>
+          </Grid>
+        </Grid>
+        <Grid item container>
+          <Grid item>
+            <img
+              src={emailIcon}
+              alt="envelope"
+              style={{ marginRight: "0.5em", verticalAlign: "bottom" }}
+            />
+          </Grid>
+          <Grid item>
+            <Typography
+              variant="body1"
+              style={{ color: theme.palette.common.blue, fontSize: "1rem" }}
+            >
+              doode1524@gmail.com
+            </Typography>
+          </Grid>
         </Grid>
       </Grid>
       <Grid item container className={classes.background} lg={9}></Grid>
