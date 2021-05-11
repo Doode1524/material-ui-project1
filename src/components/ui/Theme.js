@@ -67,7 +67,7 @@ export default createMuiTheme({
     caption: {
       fontSize: "1rem",
       fontWeight: 300,
-      color: arcGrey
+      color: arcGrey,
     },
     learnButton: {
       borderColor: `${arcBlue}`,
@@ -77,6 +77,25 @@ export default createMuiTheme({
       borderRadius: 50,
       fontFamily: "Roboto",
       fontWeight: "bold",
+    },
+  },
+  overrides: {
+    ///// overriding form default styling
+    MuiInputLabel: {
+      root: {
+        color: arcBlue,
+        fontSize: "1rem",
+      },
+    },
+    MuiInput: {
+      underline: {
+        "&:before": {
+          borderBottom: `2px solid ${arcBlue}`,
+        },
+        "&:hover:not($disabled):not($focused):not($error):before": {
+          borderBottom: `2px solid ${arcBlue}`,
+        },
+      },
     },
   },
 });
