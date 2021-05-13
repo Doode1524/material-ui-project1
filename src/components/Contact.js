@@ -171,7 +171,12 @@ export default function Contact(props) {
                   variant="body1"
                   style={{ color: theme.palette.common.blue, fontSize: "1rem" }}
                 >
-                  (555) 555-5555
+                  <a
+                    href="tel:5555555555"
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    (555) 555-5555
+                  </a>
                 </Typography>
               </Grid>
             </Grid>
@@ -188,7 +193,12 @@ export default function Contact(props) {
                   variant="body1"
                   style={{ color: theme.palette.common.blue, fontSize: "1rem" }}
                 >
-                  doode1524@gmail.com
+                  <a
+                    href="mailto:doode1524@gmail.com"
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    doode1524@gmail.com
+                  </a>
                 </Typography>
               </Grid>
             </Grid>
@@ -243,7 +253,16 @@ export default function Contact(props) {
               />
             </Grid>
             <Grid item container justify="center" style={{ marginTop: "2em" }}>
-              <Button variant="contained" className={classes.sendButton}>
+              <Button
+                disabled={
+                  name.length === 0 ||
+                  message.length === 0 ||
+                  phoneHelper.length !== 0 ||
+                  emailHelper.length !== 0
+                }
+                variant="contained"
+                className={classes.sendButton}
+              >
                 Send Message
                 <img
                   style={{ marginLeft: "1em" }}
