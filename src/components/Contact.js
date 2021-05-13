@@ -73,6 +73,10 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       backgroundColor: theme.palette.secondary.light,
     },
+    [theme.breakpoints.down("sm")]: {
+      height: 40,
+      width: 225,
+    },
   },
 }));
 
@@ -257,12 +261,12 @@ export default function Contact(props) {
             </Grid>
             <Grid item container justify="center" style={{ marginTop: "2em" }}>
               <Button
-                // disabled={
-                //   name.length === 0 ||
-                //   message.length === 0 ||
-                //   phoneHelper.length !== 0 ||
-                //   emailHelper.length !== 0
-                // }
+                disabled={
+                  name.length === 0 ||
+                  message.length === 0 ||
+                  phoneHelper.length !== 0 ||
+                  emailHelper.length !== 0
+                }
                 variant="contained"
                 className={classes.sendButton}
                 onClick={() => setOpen(true)}
@@ -279,7 +283,9 @@ export default function Contact(props) {
         </Grid>
       </Grid>
       <Dialog
+        style={{ zIndex: 1302 }}
         open={open}
+        fullScreen={matchesXS}
         onClose={() => setOpen(false)}
         PaperProps={{
           style: {
@@ -341,7 +347,7 @@ export default function Contact(props) {
               />
             </Grid>
           </Grid>
-          <Grid item style={{ maxWidth: "20em" }}>
+          <Grid item style={{ maxWidth: matchesXS ? "100%" : "20em" }}>
             <TextField
               value={message}
               fullWidth
@@ -353,7 +359,13 @@ export default function Contact(props) {
               onChange={(event) => setMessage(event.target.value)}
             />
           </Grid>
-          <Grid item container style={{ marginTop: "2em" }} alignItems="center">
+          <Grid
+            item
+            container
+            direction={matchesSM ? "column" : "row"}
+            style={{ marginTop: "2em" }}
+            alignItems="center"
+          >
             <Grid item>
               <Button
                 style={{ fontWeight: 300 }}
@@ -365,12 +377,12 @@ export default function Contact(props) {
             </Grid>
             <Grid item>
               <Button
-                // disabled={
-                //   name.length === 0 ||
-                //   message.length === 0 ||
-                //   phoneHelper.length !== 0 ||
-                //   emailHelper.length !== 0
-                // }
+                disabled={
+                  name.length === 0 ||
+                  message.length === 0 ||
+                  phoneHelper.length !== 0 ||
+                  emailHelper.length !== 0
+                }
                 variant="contained"
                 className={classes.sendButton}
                 onClick={() => setOpen(true)}
