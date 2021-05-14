@@ -98,6 +98,7 @@ export default function Contact(props) {
   const [message, setMessage] = useState("");
 
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const onChange = (event) => {
     let valid;
@@ -133,13 +134,28 @@ export default function Contact(props) {
   };
 
   const onConfirm = () => {
+    setLoading(true);
     axios
       .get(
         "https://us-central1-material-ui-project1.cloudfunctions.net/sendMail"
       )
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        setLoading(false);
+        setOpen(false);
+        setName("");
+        setEmail("");
+        setPhone("");
+        setMessage("");
+      })
+      .catch((err) => setLoading(false));
   };
+
+  const buttonContents = (
+    <React.Fragment>
+      Send Message
+      <img style={{ marginLeft: "1em" }} src={airplane} alt="paper airplane" />
+    </React.Fragment>
+  );
 
   return (
     <Grid container direction="row">
@@ -280,12 +296,7 @@ export default function Contact(props) {
                 className={classes.sendButton}
                 onClick={() => setOpen(true)}
               >
-                Send Message
-                <img
-                  style={{ marginLeft: "1em" }}
-                  src={airplane}
-                  alt="paper airplane"
-                />
+                {buttonContents}
               </Button>
             </Grid>
           </Grid>
@@ -396,12 +407,7 @@ export default function Contact(props) {
                 className={classes.sendButton}
                 onClick={onConfirm}
               >
-                Send Message
-                <img
-                  style={{ marginLeft: "1em" }}
-                  src={airplane}
-                  alt="paper airplane"
-                />
+                {loading ? <CircularProgress size={30} /> : buttonContents}
               </Button>
             </Grid>
           </Grid>
