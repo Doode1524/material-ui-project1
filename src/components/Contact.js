@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import axios from "axios";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -130,6 +130,15 @@ export default function Contact(props) {
       default:
         break;
     }
+  };
+
+  const onConfirm = () => {
+    axios
+      .get(
+        "https://us-central1-material-ui-project1.cloudfunctions.net/sendMail"
+      )
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -385,7 +394,7 @@ export default function Contact(props) {
                 }
                 variant="contained"
                 className={classes.sendButton}
-                onClick={() => setOpen(true)}
+                onClick={onConfirm}
               >
                 Send Message
                 <img
