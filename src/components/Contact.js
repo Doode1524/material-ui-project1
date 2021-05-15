@@ -100,6 +100,12 @@ export default function Contact(props) {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const [alert, setAlert] = useState({
+    open: false,
+    message: "",
+    backgroundColor: "",
+  });
+
   const onChange = (event) => {
     let valid;
 
@@ -146,8 +152,20 @@ export default function Contact(props) {
         setEmail("");
         setPhone("");
         setMessage("");
+        setAlert({
+          open: true,
+          message: "Message sent successfully!",
+          backgroundColor: "#4BB543",
+        });
       })
-      .catch((err) => setLoading(false));
+      .catch((err) => {
+        setLoading(false);
+        setAlert({
+          open: true,
+          message: "Something went wrong, please try again!",
+          backgroundColor: "#FF3232",
+        });
+      });
   };
 
   const buttonContents = (
@@ -413,6 +431,14 @@ export default function Contact(props) {
           </Grid>
         </DialogContent>
       </Dialog>
+      <Snackbar
+        open={alert.open}
+        message={alert.message}
+        ContentProps={{ style: { backgroundColor: alert.backgroundColor } }}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        onClose={() => setAlert({ ...alert, open: false })}
+        autoHideDuration={4000}
+      />
       <Grid
         item
         container
