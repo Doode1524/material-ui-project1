@@ -23,7 +23,7 @@ exports.sendMail = functions.https.onRequest((request, response) => {
 
     mailOptions = {
       from: "material-ui-project1",
-      to: "doode1524@gmail.com",
+      to: "castronovo.joey@gmail.com",
       subject: "Message received!",
       html:
       `<p style="font-size: 16px">From: ${name}</p>
